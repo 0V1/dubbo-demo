@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+         
+	 <!--
+	 	磁盘存储配置：用来指定缓存在磁盘上的存储位置。 
+		可以使用JavaVM环境变量(user.home, user.dir, java.io.tmpdir)
+		<diskStore path = "c:/cache/" /> 
+	 --> 
+    <diskStore path="java.io.tmpdir/ehcache"/>
+    
+       <!-- 
+    	maxEntriesLocalHeap="10000"设置缓存在本地内存中最大缓存项数量（0表示无限）  
+        maxEntriesLocalDisk="10000000"设置保存在本地磁盘中的的最大缓存项数量。默认为0，表示数量不限。  
+        eternal="false"设置缓存项是否为永久的.如果设置为true，缓存项的过期设置将被忽略，缓存项永不过期  
+        timeToIdleSeconds="120"缓存element在过期前的空闲时间。   
+        timeToLiveSeconds="120"缓存element的有效生命期。  
+        diskExpiryThreadIntervalSeconds="120"磁盘缓存的清理线程运行间隔，默认是120秒.  
+        overflowToDisk="true" 表示内存不足时，是否启用磁盘缓存。 
+        diskSpoolBufferSizeMB 磁盘缓冲区大小，使用异步方式写入磁盘，默认30M，每一个缓存区使用独立的缓冲区
+        memoryStoreEvictionPolicy="LRU"当内存缓存达到最大，有新的element加入的时候， 
+			移除缓存中element的策略。默认是LRU(最近最少使用)，可选的有LFU(先进先出)和FIFO(较少使用)
+     -->
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            maxEntriesLocalDisk="10000000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            diskSpoolBufferSizeMB="30"
+             overflowToDisk="true"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/>
+            
+    <cache name="sampleCache1"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           overflowToDisk="true"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU"/>
+</ehcache>
