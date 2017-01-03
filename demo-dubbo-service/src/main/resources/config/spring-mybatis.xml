@@ -12,16 +12,9 @@
     http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd
 	">
-
-	<!-- JNDI方式配置数据源 -->
-
-	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
-	<!-- <property name="jndiName" value="${jndiName}" /> -->
-	<!-- <property name="resourceRef" value="true" /> -->
-	<!-- </bean> -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:META-INF/conf/server.properties" />
+		<property name="location" value="classpath:config/server.properties" />
 	</bean>
 	<!-- 阿里 druid数据库连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">  
